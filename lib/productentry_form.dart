@@ -11,7 +11,6 @@ class ProductEntryFormPage extends StatefulWidget {
 class _ProductEntryFormPageState extends State<ProductEntryFormPage> {
   final _formKey = GlobalKey<FormState>();
   
-  // Variable untuk menyimpan input
   String _name = "";
   int _price = 0;
   String _description = "";

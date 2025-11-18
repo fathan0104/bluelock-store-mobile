@@ -1,3 +1,4 @@
+import 'package:bluelock_store/screens/list_product.dart';
 import 'package:flutter/material.dart';
 import 'productentry_form.dart';
 
@@ -6,9 +7,9 @@ class MyHomePage extends StatelessWidget {
 
   // List untuk menyimpan item-item tombol dengan warna yang berbeda
   final List<ItemHomepage> items = [
-    ItemHomepage("All Products", Icons.inventory, Colors.blue),
-    ItemHomepage("My Products", Icons.person, Colors.green),
-    ItemHomepage("Create Product", Icons.add, Colors.red),
+    ItemHomepage("All Products", Icons.inventory, Colors.black),
+    ItemHomepage("My Products", Icons.person, Colors.brown),
+    ItemHomepage("Create Product", Icons.add, Colors.yellow),
   ];
 
   @override
@@ -17,10 +18,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'BlueLock Store',
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
@@ -39,21 +37,18 @@ class MyHomePage extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 16.0),
-            
+
             // Welcome text
             const Padding(
               padding: EdgeInsets.only(top: 16.0),
               child: Text(
                 'Welcome to BlueLock Store!',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 18.0,
-                ),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.0),
               ),
             ),
-            
+
             const SizedBox(height: 16.0),
-            
+
             // Grid untuk menampilkan tombol-tombol
             Expanded(
               child: GridView.count(
@@ -101,10 +96,7 @@ class InfoCard extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Text(
-              title,
-              style: const TextStyle(fontWeight: FontWeight.bold),
-            ),
+            Text(title, style: const TextStyle(fontWeight: FontWeight.bold)),
             const SizedBox(height: 8.0),
             Text(content),
           ],
@@ -137,8 +129,7 @@ class ItemCard extends StatelessWidget {
                 duration: const Duration(seconds: 2),
               ),
             );
-          
-          // Navigate ke halaman form jika tombol Create Product ditekan
+
           if (item.name == "Create Product") {
             Navigator.push(
               context,
@@ -155,11 +146,7 @@ class ItemCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
+                Icon(item.icon, color: Colors.white, size: 30.0),
                 const SizedBox(height: 8),
                 Text(
                   item.name,
@@ -178,7 +165,6 @@ class ItemCard extends StatelessWidget {
   }
 }
 
-// Widget Drawer dengan dua opsi: Halaman Utama dan Tambah Produk
 class LeftDrawer extends StatelessWidget {
   const LeftDrawer({super.key});
 
@@ -207,10 +193,7 @@ class LeftDrawer extends StatelessWidget {
                 Text(
                   'Kelola produk sepak bola favoritmu!',
                   textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
-                  ),
+                  style: TextStyle(fontSize: 15, color: Colors.white),
                 ),
               ],
             ),
@@ -221,9 +204,7 @@ class LeftDrawer extends StatelessWidget {
             onTap: () {
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => MyHomePage(),
-                ),
+                MaterialPageRoute(builder: (context) => MyHomePage()),
               );
             },
           ),
@@ -237,6 +218,16 @@ class LeftDrawer extends StatelessWidget {
                   builder: (context) => const ProductEntryFormPage(),
                 ),
               );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.shopping_basket),
+            title: const Text('Daftar Produk'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ProductPage()),
+              );  
             },
           ),
         ],
